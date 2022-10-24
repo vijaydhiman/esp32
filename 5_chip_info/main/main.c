@@ -21,6 +21,12 @@ void app_main()
     printf("%dMB %s flash\n", spi_flash_get_chip_size() / (1024 * 1024),
             (chip_info.features & CHIP_FEATURE_EMB_FLASH) ? "embedded" : "external");
 
+    printf("idf version is %s\n", esp_get_idf_version());
+
+    uint8_t chipId[6];
+    esp_efuse_mac_get_default(chipId);
+    printf("mac / chip id: %02x%02x%02x%02x%02x%02x\n", chipId[0], chipId[1], chipId[2], chipId[3], chipId[4], chipId[5]);
+
     for (int i = 10; i >= 0; i--) {
         printf("Restarting in %d seconds...\n", i);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
