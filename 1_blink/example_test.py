@@ -6,9 +6,9 @@ import ttfw_idf
 
 
 @ttfw_idf.idf_example_test(env_tag='Example_TWAI1', target=['esp32', 'esp32s2'], ci_target=['esp32'])
-def test_examples_gpio(env, extra_data):
-    app_name = 'gpio'
-    dut = env.get_dut(app_name, 'examples/peripherals/gpio/generic_gpio')
+def test_examples(env, extra_data):
+    app_name = 'app_name'
+    dut = env.get_dut(app_name, 'app_name')
     dut.start_app()
     res = dut.expect(ttfw_idf.MINIMUM_FREE_HEAP_SIZE_RE)
     if not res:
@@ -17,4 +17,4 @@ def test_examples_gpio(env, extra_data):
 
 
 if __name__ == '__main__':
-    test_examples_gpio()
+    test_examples()
